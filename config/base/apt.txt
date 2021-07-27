@@ -17,3 +17,7 @@ libedit-dev
 libxml2-dev
 llvm
 
+# required for h5py
+pkg-config
+libhdf5-103
+libhdf5-dev

@@ -25,7 +25,7 @@ for package in ${pipeline[@]} ; do
 
         # installs python dependencies
         if test -f pip.txt ; then
-            pip3 install -r pip.txt
+            pip3 install --no-use-pep517 -r pip.txt
         else
             echo "No pip.txt file for $package, skipping pip package installation."
         fi

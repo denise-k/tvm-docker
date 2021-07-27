@@ -32,6 +32,8 @@ RUN groupadd -r tvm -g 3604 \
  && usermod -aG sudo tvm \
  && echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
+RUN sudo apt update -y
+
 RUN ./config.sh $CONFIG_PIPELINE
 
 USER tvm
@@ -48,10 +50,12 @@ RUN cd /home/tvm/tvm \
  && mkdir build \
  && cat /home/tvm/tvm/cmake/config.cmake /home/tvm/cmake.txt >> build/config.cmake
 
+RUN cat /home/tvm/tvm/build/config.cmake
+
 ENV THREADS=8
 
 # Run the custom build pipeline
-RUN ./build.sh $BUILD_PIPELINE
+#RUN ./build.sh $BUILD_PIPELINE
 
 # Set up the working space
 WORKDIR /home/tvm
